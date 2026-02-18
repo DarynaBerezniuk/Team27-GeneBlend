@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="{% static 'css\home_style.css' %}">
 </head>
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
     <header class="top-bar">
     <div class="logo-group">
@@ -32,7 +36,11 @@
         <a href="#" class="button2">Калькулятор спадковості</a>
     </div>
 </header>
-<div class="photo-box">ДНК</div>
+<div class="photo-box">
+  <script src={% static "scripts/dna.js" %}>
+    Dna
+  </script>
+</div>
 
     <div class="info-row">
         <div class="info-card1">

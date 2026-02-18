@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     min-height: 100vh;
     background: #F0F3FF;
@@ -99,18 +100,13 @@ body {
     width: 325px;
     height: 457px;
     margin: 50px auto 50px;
-    background: transparent;
-    background-color: transparent;
+    background: #D9D9D9;
     /* border-radius: 20px; */
     flex-shrink: 0;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.photo-box canvas {
-  background-color: transparent;
 }
 
 .info-row {

@@ -19,7 +19,6 @@ window.addEventListener('load', function() {
     controls.minPolarAngle = Math.PI / 2;
     controls.maxPolarAngle = Math.PI / 2;
 
-    // --- INTERACTION SETUP ---
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
@@ -27,7 +26,7 @@ window.addEventListener('load', function() {
         adenine: 0xFF6B6B, thymine: 0x4D96FF,
         cytosine: 0x6BCB77, guanine: 0xFFD93D,
         backbone: 0xFFFFFF,
-        highlight: 0xFFFFFF // Color when "lit up"
+        highlight: 0xFFFFFF 
     };
 
     const tubeGeo = new THREE.CylinderGeometry(0.45, 0.45, 6, 32);
@@ -41,11 +40,9 @@ window.addEventListener('load', function() {
         if (Math.random() > 0.5) { [lCol, rCol] = [colors.adenine, colors.thymine]; } 
         else { [lCol, rCol] = [colors.cytosine, colors.guanine]; }
 
-        // We use unique materials for each mesh so we can change them individually
         const leftTube = new THREE.Mesh(tubeGeo, new THREE.MeshBasicMaterial({ color: lCol }));
         leftTube.rotation.z = Math.PI / 2;
         leftTube.position.x = -3;
-        // Store original color for resetting later
         leftTube.userData.originalColor = lCol;
 
         const rightTube = new THREE.Mesh(tubeGeo, new THREE.MeshBasicMaterial({ color: rCol }));
@@ -68,26 +65,21 @@ window.addEventListener('load', function() {
     }
     scene.add(dnaGroup);
 
-    // --- CLICK FUNCTION ---
     function onClick(event) {
-        // Calculate mouse position relative to the photo-box div
         const rect = container.getBoundingClientRect();
         mouse.x = ((event.clientX - rect.left) / width) * 2 - 1;
         mouse.y = -((event.clientY - rect.top) / height) * 2 + 1;
 
         raycaster.setFromCamera(mouse, camera);
 
-        // Check for hits (true means check children of groups)
         const intersects = raycaster.intersectObjects(dnaGroup.children, true);
 
-        // Reset all parts to original colors first
         dnaGroup.traverse((child) => {
             if (child.isMesh) {
                 child.material.color.setHex(child.userData.originalColor);
             }
         });
 
-        // If we hit something, "light it up"
         if (intersects.length > 0) {
             const clickedPart = intersects[0].object;
             clickedPart.material.color.setHex(colors.highlight);

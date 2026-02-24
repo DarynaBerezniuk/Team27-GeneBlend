@@ -1,27 +1,13 @@
-/**
- * Updated education.js for Django Integration
- * * Changes: 
- * 1. Removed hardcoded CARDS_DATA array.
- * 2. Added fetch API logic to load data from the database via Django views.
- * 3. Integrated initial rendering into the data-loading promise chain.
- */
-
-// Helper functions for data structure (retained from original )
 const t=(c)=>({type:"text",content:c});
 const h=(c)=>({type:"head",content:c});
 const l=(...items)=>({type:"list",items});
 const nl=(...items)=>({type:"numlist",items});
 const n=(c)=>({type:"note",content:c});
 
-// Initialize empty data array
 let CARDS_DATA = [];
 
-/**
- * Fetches card data from the Django API view.
- */
 async function loadEducationData() {
     try {
-        // This URL must match the path defined in your calculator/urls.py
         const response = await fetch('/api/education-data/');
         
         if (!response.ok) {
@@ -30,7 +16,6 @@ async function loadEducationData() {
         
         CARDS_DATA = await response.json();
         
-        // Once data is loaded, perform the initial render [cite: 1]
         renderCards(""); 
         
     } catch (error) {
@@ -42,13 +27,7 @@ async function loadEducationData() {
     }
 }
 
-// Start loading process immediately
 loadEducationData();
-
-/**
- * The remaining rendering logic stays mostly the same as your original file,
- * but now works with the dynamic CARDS_DATA variable.
- */
 
 function renderCards(query) {
     const grid = document.getElementById('card-grid');
@@ -71,7 +50,6 @@ function renderCards(query) {
             const el = document.createElement('div');
             el.className = `card${isDim ? ' dim' : ''}`;
             
-            // Image/SVG handling from original logic 
             const imgHtml = card.image ? `<div class="card-img-mini">${card.image}</div>` : '';
             
             el.innerHTML = `
@@ -92,14 +70,12 @@ function renderCards(query) {
     });
 }
 
-// Utility to highlight search matches 
 function highlightText(text, query) {
     if (!query) return text;
     const re = new RegExp(`(${query})`, 'gi');
     return text.replace(re, '<span class="match">$1</span>');
 }
 
-// Modal handling logic 
 function openCardModal(card) {
     document.getElementById('modal-title').textContent = card.title;
     document.getElementById('modal-body').innerHTML = renderSections(card.sections);
@@ -118,7 +94,6 @@ function openCardModal(card) {
     document.getElementById('overlay').classList.add('open');
 }
 
-// Section rendering logic (handles text, head, list, note types) 
 function renderSections(sections) {
     return sections.map(s => {
         if (s.type === 'text') return `<p>${s.content}</p>`;
@@ -130,7 +105,6 @@ function renderSections(sections) {
     }).join('');
 }
 
-// Search and Overlay handlers 
 function handleSearch(val) { renderCards(val); }
 function closeModal() { document.getElementById('overlay').classList.remove('open'); }
 function handleOverlayClick(e) { if(e.target === document.getElementById('overlay')) closeModal(); }

@@ -22,7 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('education/', views.education, name='education'),
-    path('result/', views.result),
     path('api/education-data/', views.education_api, name='education_api'),
     path('calculator/', include('calculator.urls'))
 ]

@@ -3,12 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     min-height: 100vh;
     background: #F0F3FF;
     font-family: 'Montserrat Alternates', sans-serif;
 }
 
+/* --- TOP BAR --- */
 .top-bar {
     width: 100%;
     min-height: 120px;
@@ -16,8 +18,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 20px 50px;
+    position: relative; /* Ensures it stays above the hero content */
+    z-index: 10;
 }
 
 .logo-group {
@@ -26,7 +29,6 @@ body {
 }
 
 .title {
-    padding-top: -5px;
     font-weight: 700;
     font-size: 48px;
     color: #000000;
@@ -34,22 +36,12 @@ body {
 }
 
 .parag {
-
     font-weight: 275;
     font-size: 20px;
     color: #000000;
     margin-top: 5px;
-    padding-top: -20px;
     padding-left: 20px;
-
-    font-family: 'Montserrat Alternates';
-    font-style: normal;
-    font-weight: 275;
-    font-size: 20px;
     line-height: 24px;
-
-    color: #000000;
-
 }
 
 .nav-group {
@@ -59,24 +51,19 @@ body {
 }
 
 .button1, .button2 {
-
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-
     padding: 15px 30px;
     min-width: 200px;
-
     background-color: #97c2ee;
     color: white;
     border-radius: 50px;
-
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
     transition: 0.3s;
-
 }
 
 .button1:hover, .button2:hover {
@@ -85,23 +72,31 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+/* --- HERO SECTION --- */
 .hero-container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
+    justify-content: flex-start; 
+    align-items: center; /* Vertically centers the DNA within the container */
+    width: 100%;
     max-width: 1400px;
-    margin: 50px auto;
-    padding: 0 20px;
+    
+    /* GAP BETWEEN TOP BAR AND PHOTOBOX: Adjust the 60px as needed */
+    margin: 60px auto 0; 
+    
+    padding: 0 50px;
 }
 
 .photo-box {
     width: 325px;
     height: 457px;
-    margin: 50px auto 50px;
+    
+    /* POSITIONING: Small margin from the left side */
+    margin-top: 30px;
+    margin-left: 50px; 
+    
+    /* INTERNAL PADDING: Equal top/bottom space inside the box */
+    
     background: transparent;
-    background-color: transparent;
-    /* border-radius: 20px; */
     flex-shrink: 0;
     overflow: hidden;
     display: flex;
@@ -110,15 +105,16 @@ body {
 }
 
 .photo-box canvas {
-  background-color: transparent;
+    background-color: transparent;
 }
 
+/* --- INFO CARDS --- */
 .info-row {
     display: flex;
     justify-content: center;
     gap: 30px;
     max-width: 1400px;
-    margin: 50px auto;
+    margin: 30px auto; /* Creates space between DNA and bottom cards */
     padding: 0 20px;
 }
 
@@ -128,6 +124,8 @@ body {
     padding: 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
+/* ... (rest of card styles remain the same) ... */
 
 .info-card1 {
     background: #FFFFFF;
@@ -166,7 +164,6 @@ body {
     margin-bottom: 15px;
     text-align: center;
 }
-
 
 .info-card3 {
     background: #D9D9D9;

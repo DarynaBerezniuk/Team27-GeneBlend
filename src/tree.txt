@@ -1,0 +1,60 @@
+.
+├── calculator
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       └── __init__.cpython-314.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-314.pyc
+│   │   ├── apps.cpython-314.pyc
+│   │   ├── __init__.cpython-314.pyc
+│   │   ├── models.cpython-314.pyc
+│   │   ├── urls.cpython-314.pyc
+│   │   └── views.cpython-314.pyc
+│   ├── static
+│   │   └── calculator
+│   │       ├── css
+│   │       │   └── calculator.css
+│   │       └── scripts
+│   │           └── calculator.js
+│   ├── templates
+│   │   └── calculator
+│   │       └── calculator.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── db.sqlite3
+├── GeneBlend
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── education.css
+│   │   ├── __init__.cpython-314.pyc
+│   │   ├── settings.cpython-314.pyc
+│   │   ├── urls.cpython-314.pyc
+│   │   ├── views.cpython-314.pyc
+│   │   └── wsgi.cpython-314.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py
+│   └── wsgi.py
+├── manage.py
+├── static
+│   ├── css
+│   │   ├── education.css
+│   │   ├── home_style.css
+│   │   └── results.css
+│   └── scripts
+│       ├── dna.js
+│       └── education.js
+├── templates
+│   ├── education.html
+│   ├── home.html
+│   └── results.html
+└── tree.txt
+
+17 directories, 41 files

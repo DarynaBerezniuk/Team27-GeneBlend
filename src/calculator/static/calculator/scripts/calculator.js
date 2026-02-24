@@ -9,8 +9,6 @@ const labelMap = {
   blood:      { O: 'I (O)', A: 'II (A)', B: 'III (B)', AB: 'IV (AB)' },
   rh:         { pos: 'Rh+', neg: 'Rh−' },
   height:     { tall: 'Високий', medium: 'Середній', short: 'Низький' },
-  tongue:     { yes: 'Може', no: 'Не може' },
-  colorblind: { yes: 'Є', no: 'Немає', carrier: 'Носій' },
   yn:         { yes: 'Є', no: 'Немає' },
 };
 

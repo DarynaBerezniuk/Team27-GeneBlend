@@ -10,7 +10,7 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;700&family=Almarai:wght@300;400;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="{% static 'calculator//css/calculator.css' %}">
+  <link rel="stylesheet" href="{% static 'calculator/css/calculator.css' %}">
 </head>
 
 <body>
@@ -22,8 +22,8 @@
       <div class="logo-sub">created by APPS.UCU</div>
     </div>
     <div class="header-nav">
-      <a href="/education" class="nav-btn">Освітня сторінка</a>
-      <a href="/dna" class="nav-btn">Модель ДНК</a>
+      <a href="{% url 'education' %}" class="nav-btn">Освітня сторінка</a>
+      <a href="{% url 'home' %}" class="nav-btn">Модель ДНК</a>
     </div>
   </header>
 

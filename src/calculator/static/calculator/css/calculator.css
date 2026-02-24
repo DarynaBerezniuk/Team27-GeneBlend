@@ -10,7 +10,6 @@ body {
   min-height: 100vh;
 }
 
-/* ── HEADER ── */
 header {
   background: #fff;
   padding: 20px 48px;
@@ -60,9 +59,9 @@ header {
 .nav-btn:hover {
   background: #4a7fe0;
   color: #fff;
+  text-decoration: none;
 }
 
-/* ── PAGE ── */
 .page-body {
   padding: 40px 48px 80px;
 }
@@ -89,7 +88,6 @@ header {
   margin-bottom: 28px;
 }
 
-/* ── TRAIT ROW ── */
 .trait-row {
   margin-bottom: 10px;
   border-radius: 16px;
@@ -180,7 +178,6 @@ header {
   transform: rotate(180deg);
 }
 
-/* ── PANEL ── */
 .trait-panel {
   background: #ffffff;
   border-radius: 0 0 16px 16px;
@@ -214,7 +211,6 @@ header {
   margin-bottom: 14px;
 }
 
-/* ── SELECTS ── */
 .select-wrap {
   position: relative;
 }
@@ -263,7 +259,6 @@ header {
   pointer-events: none;
 }
 
-/* ── PARENT SUBSECTION ── */
 .parent-section {
   border-left: 2px solid #C4D7FB;
   padding-left: 11px;
@@ -277,7 +272,6 @@ header {
   margin-bottom: 5px;
 }
 
-/* ── BUTTONS ── */
 .btn-done {
   margin-top: 12px;
   width: 100%;

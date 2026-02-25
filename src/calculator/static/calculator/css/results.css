@@ -20,7 +20,6 @@ body {
     color: #333;
 }
 
-
 header {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -59,36 +58,54 @@ main {
     padding: 40px;
     max-width: 1400px;
     margin: 0 auto;
+    min-height: calc(100vh - 68px);
 }
 
-.page-title { margin-bottom: 30px; font-size: 22px; font-weight: 700; }
+.page-title { 
+    text-align: center;
+    margin-bottom: 40px; 
+    font-size: 28px; 
+    font-weight: 700; 
+}
 
 .results-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 24px;
+    
+    justify-content: center; 
+    
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
 
 .card {
     background: #fff;
     border-radius: 25px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
     display: flex;
     flex-direction: column;
-    height: 220px;
+    height: 240px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(60, 100, 180, 0.1);
 }
 
 .card-title {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     color: #222;
-    margin-bottom: auto;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-light);
+    padding-bottom: 10px;
 }
 
-
 .stats-container {
-    flex-grow: 2;
+    flex-grow: 1;
     display: flex;
     align-items: center;
     width: 100%;
@@ -98,26 +115,26 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .stat-row {
     display: flex;
     align-items: center;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .stat-row span:first-child {
-    width: 85px;
+    width: 90px;
     font-weight: 600;
-    color: #555;
+    color: #444;
     flex-shrink: 0;
 }
 
 .progress-track {
     flex-grow: 1;
-    height: 8px;
-    background: #f0f0f0;
+    height: 10px;
+    background: #f0f4f8;
     border-radius: 10px;
     margin: 0 12px;
     overflow: hidden;
@@ -127,12 +144,13 @@ main {
     height: 100%;
     background: var(--accent);
     border-radius: 10px;
-}
+    transition: width 1s ease-out;}
 
 .stat-percent {
-    width: 35px;
+    width: 40px;
     text-align: right;
     font-weight: 700;
-    color: #333;
-    font-size: 12px;
+    color: var(--accent);
+    font-size: 13px;
 }
+

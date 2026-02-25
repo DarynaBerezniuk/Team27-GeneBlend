@@ -645,101 +645,53 @@ _HEIGHT      = HeightTrait()
 
 class GeneticCalculator:
     """
-    Accepts a dict of form fields (as posted from the HTML form) and returns
-    a dict of child phenotype probability distributions per trait.
-
-    Usage:
-        calc = GeneticCalculator()
-        results = calc.calculate(form_data)
-        # results == {
-        #   "eye_color":   {"brown": 0.75, "blue": 0.25},
-        #   "hair_color":  {"dark": 0.5, "red": 0.25, "blonde": 0.25},
-        #   ...
-        # }
+    Accepts a dict of form fields and returns a dict of child phenotype probability 
+    distributions per trait. Returns an empty dict for traits with no parent info.
     """
 
     def _get(self, data: dict, key: str) -> Optional[str]:
         """Return value or None if missing/unknown/empty."""
         v = data.get(key, "")
+        # Assuming _is_known is defined elsewhere in your file
         return v if _is_known(v) else None
 
     def calculate(self, form_data: dict) -> dict[str, dict[str, float]]:
         d = form_data
         g = self._get
 
+        # Define mapping of trait keys to their respective calculation objects 
+        # and their specific form field suffixes
+        trait_mapping = {
+            "eye_color": (_EYE_COLOR, "eye"),
+            "hair_color": (_HAIR_COLOR, "hair_color"),
+            "hair_type": (_HAIR_TYPE, "hair_type"),
+            "blood": (_BLOOD_TYPE, "blood"),
+            "rh": (_RH_FACTOR, "rh"),
+            "height": (_HEIGHT, "height"),
+            "dimples": (_DIMPLES, "dimples"),
+            "freckles": (_FRECKLES, "freckles"),
+        }
+
         results: dict[str, dict[str, float]] = {}
 
-        results["eye_color"] = _EYE_COLOR.calculate(
-            father_ph = g(d, "father_eye"),
-            mother_ph = g(d, "mother_eye"),
-            father_gp1_ph = g(d, "pf_father_eye"),
-            father_gp2_ph = g(d, "pf_mother_eye"),
-            mother_gp1_ph = g(d, "pm_father_eye"),
-            mother_gp2_ph = g(d, "pm_mother_eye"),
-        )
+        for trait_key, (calculator_obj, form_suffix) in trait_mapping.items():
+            # Extract primary parent info
+            f_ph = g(d, f"father_{form_suffix}")
+            m_ph = g(d, f"mother_{form_suffix}")
 
-        results["hair_color"] = _HAIR_COLOR.calculate(
-            father_ph = g(d, "father_hair_color"),
-            mother_ph = g(d, "mother_hair_color"),
-            father_gp1_ph = g(d, "pf_father_hair_color"),
-            father_gp2_ph = g(d, "pf_mother_hair_color"),
-            mother_gp1_ph = g(d, "pm_father_hair_color"),
-            mother_gp2_ph = g(d, "pm_mother_hair_color"),
-        )
+            # If NO parent info is provided, return empty dict for this trait
+            if f_ph is None and m_ph is None:
+                results[trait_key] = {}
+                continue
 
-        results["hair_type"] = _HAIR_TYPE.calculate(
-            father_ph = g(d, "father_hair_type"),
-            mother_ph = g(d, "mother_hair_type"),
-            father_gp1_ph = g(d, "pf_father_hair_type"),
-            father_gp2_ph = g(d, "pf_mother_hair_type"),
-            mother_gp1_ph = g(d, "pm_father_hair_type"),
-            mother_gp2_ph = g(d, "pm_mother_hair_type"),
-        )
-
-        results["blood"] = _BLOOD_TYPE.calculate(
-            father_ph = g(d, "father_blood"),
-            mother_ph = g(d, "mother_blood"),
-            father_gp1_ph = g(d, "pf_father_blood"),
-            father_gp2_ph = g(d, "pf_mother_blood"),
-            mother_gp1_ph = g(d, "pm_father_blood"),
-            mother_gp2_ph = g(d, "pm_mother_blood"),
-        )
-
-        results["rh"] = _RH_FACTOR.calculate(
-            father_ph = g(d, "father_rh"),
-            mother_ph = g(d, "mother_rh"),
-            father_gp1_ph = g(d, "pf_father_rh"),
-            father_gp2_ph = g(d, "pf_mother_rh"),
-            mother_gp1_ph = g(d, "pm_father_rh"),
-            mother_gp2_ph = g(d, "pm_mother_rh"),
-        )
-
-        results["height"] = _HEIGHT.calculate(
-            father_ph = g(d, "father_height"),
-            mother_ph = g(d, "mother_height"),
-            father_gp1_ph = g(d, "pf_father_height"),
-            father_gp2_ph = g(d, "pf_mother_height"),
-            mother_gp1_ph = g(d, "pm_father_height"),
-            mother_gp2_ph = g(d, "pm_mother_height"),
-        )
-
-        results["dimples"] = _DIMPLES.calculate(
-            father_ph = g(d, "father_dimples"),
-            mother_ph = g(d, "mother_dimples"),
-            father_gp1_ph = g(d, "pf_father_dimples"),
-            father_gp2_ph = g(d, "pf_mother_dimples"),
-            mother_gp1_ph = g(d, "pm_father_dimples"),
-            mother_gp2_ph = g(d, "pm_mother_dimples"),
-        )
-
-        results["freckles"] = _FRECKLES.calculate(
-            father_ph = g(d, "father_freckles"),
-            mother_ph = g(d, "mother_freckles"),
-            father_gp1_ph = g(d, "pf_father_freckles"),
-            father_gp2_ph = g(d, "pf_mother_freckles"),
-            mother_gp1_ph = g(d, "pm_father_freckles"),
-            mother_gp2_ph = g(d, "pm_mother_freckles"),
-        )
+            # Otherwise, perform full calculation with grandparents
+            results[trait_key] = calculator_obj.calculate(
+                father_ph = f_ph,
+                mother_ph = m_ph,
+                father_gp1_ph = g(d, f"pf_father_{form_suffix}"),
+                father_gp2_ph = g(d, f"pf_mother_{form_suffix}"),
+                mother_gp1_ph = g(d, f"pm_father_{form_suffix}"),
+                mother_gp2_ph = g(d, f"pm_mother_{form_suffix}"),
+            )
 
         return results
-

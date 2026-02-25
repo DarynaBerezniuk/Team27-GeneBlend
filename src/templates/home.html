@@ -48,7 +48,13 @@
                 <h3>Did<br>you<br>know?</h3>
         </div>
         <div class="dyk-text">
-            <p>Якби ти зміг розгорнути всі ланцюжки ДНК лише з однієї своєї клітини в одну лінію, її довжина склала б приблизно 2 метри.</p>
+            <p>
+                {% if fact %}
+                    {{ fact.fun_fact }}
+                {% else %}
+                    Stay tuned for more fun facts!
+                {% endif %}
+            </p>
         </div>
             </div>
 

@@ -10,7 +10,6 @@ body {
   min-height: 100vh;
 }
 
-/* ── HEADER ── */
 header {
   background: #fff;
   padding: 20px 48px;
@@ -60,9 +59,9 @@ header {
 .nav-btn:hover {
   background: #4a7fe0;
   color: #fff;
+  text-decoration: none;
 }
 
-/* ── PAGE ── */
 .page-body {
   padding: 40px 48px 80px;
 }
@@ -89,7 +88,6 @@ header {
   margin-bottom: 28px;
 }
 
-/* ── TRAIT ROW ── */
 .trait-row {
   margin-bottom: 10px;
   border-radius: 16px;
@@ -137,7 +135,6 @@ header {
   color: #1a1a1a;
 }
 
-/* badges — one per parent */
 .badges {
   display: flex;
   gap: 6px;
@@ -181,7 +178,6 @@ header {
   transform: rotate(180deg);
 }
 
-/* ── PANEL ── */
 .trait-panel {
   background: #ffffff;
   border-radius: 0 0 16px 16px;
@@ -196,14 +192,12 @@ header {
   padding: 12px 12px 14px;
 }
 
-/* ── TWO-COL INSIDE PANEL ── */
 .panel-cols {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-/* Each column is its own rounded card */
 .panel-cols > div {
   background: #f5f6f8;
   border-radius: 16px;
@@ -215,27 +209,6 @@ header {
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 14px;
-}
-
-.panel-col-title.father-title {
-  color: #1a1a1a;
-}
-
-.panel-col-title.mother-title {
-  color: #1a1a1a;
-}
-
-/* ── SELECTS ── */
-.field-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 5px;
-  margin-top: 10px;
-}
-
-.field-label:first-of-type {
-  margin-top: 0;
 }
 
 .select-wrap {
@@ -286,7 +259,6 @@ header {
   pointer-events: none;
 }
 
-/* ── PARENT SUBSECTION ── */
 .parent-section {
   border-left: 2px solid #C4D7FB;
   padding-left: 11px;
@@ -300,36 +272,6 @@ header {
   margin-bottom: 5px;
 }
 
-/* ── GRANDPARENTS ROW ── */
-.gp-row {
-  border-left: 2px solid #C4D7FB;
-  padding-left: 9px;
-  margin-top: 7px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-}
-
-.gp-label {
-  font-size: 11px;
-  color: #666;
-  margin-bottom: 3px;
-}
-
-.gp-row .select-wrap select {
-  font-size: 11px;
-  padding: 6px 24px 6px 9px;
-  border-radius: 7px;
-}
-
-.gp-row .select-wrap::after {
-  right: 7px;
-  border-left-width: 3px;
-  border-right-width: 3px;
-  border-top-width: 4px;
-}
-
-/* ── ГОТОВО ── */
 .btn-done {
   margin-top: 12px;
   width: 100%;
@@ -350,7 +292,6 @@ header {
   background: #b0c9f8;
 }
 
-/* ── CALCULATE ── */
 .calc-wrap {
   display: flex;
   justify-content: center;

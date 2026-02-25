@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeneBlend - Результати аналізу</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="results.css">
+    <link rel="stylesheet" href="{% static 'calculator/css/results.css' %}">
 </head>
 <body>
 
@@ -15,8 +17,8 @@
             <div class="sub">created by APPS.UCU</div>
         </div>
         <div class="nav-btns">
-            <button class="btn-nav">Освітня сторінка</button>
-            <button class="btn-nav">Модель ДНК</button>
+            <a href="{% url 'education' %}" class="btn-nav">Освітня сторінка</a>
+            <a href="{% url 'home' %}" class="btn-nav">Модель ДНК</a>
         </div>
     </header>
 

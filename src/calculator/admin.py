@@ -1,9 +1,12 @@
 from django.contrib import admin
-from .models import EducationCard
+from .models import EducationCard, FunFact
 
 @admin.register(EducationCard)
 class EducationCardAdmin(admin.ModelAdmin):
-    # This controls which columns show up in the list view
     list_display = ('title', 'row', 'col')
-    # This adds a search bar to the admin
     search_fields = ('title', 'summary_text')
+
+@admin.register(FunFact)
+class FunFactAdmin(admin.ModelAdmin):
+    id_display = 'id'
+    text_display = 'fact'

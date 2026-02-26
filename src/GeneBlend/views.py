@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from calculator.models import EducationCard
+from calculator.models import EducationCard, FunFact
 
 def home(request):
-    return render(request, 'home.html')
+    random_fact = FunFact.objects.order_by('?').first()
+
+    return render(request, 'home.html', {'fact': random_fact})    
 
 def education(request):
     return render(request, 'education.html')

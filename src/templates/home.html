@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 {% load static %}
 
 <html lang="ua">
@@ -10,60 +9,77 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css\home_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
     <header class="top-bar">
-    <div class="logo-group">
-        <div class="title">
-            <h1>GeneBlend</h1>
+        <div class="logo-group">
+            <div class="title">
+                <h1>GeneBlend</h1>
+            </div>
+            <div class="parag">
+                <p>created by APPS.UCU</p>
+            </div>
         </div>
-        <div class="parag">
-            <p>created by APPS.UCU</p>
-        </div>
-    </div>
 
-    <div class="nav-group">
-      <a href="{% url 'education' %}" class="button1">Освітня сторінка</a>
-        <a href="{% url 'calculator' %}" class="button2">Калькулятор спадковості</a>
-    </div>
-</header>
-<div class="photo-box">
-  <script src={% static "scripts/dna.js" %}>
-    Dna
-  </script>
-</div>
+        <nav class="nav-group">
+            <a href="{% url 'education' %}" class="button1">Освітня сторінка</a>
+            <a href="{% url 'calculator' %}" class="button2">Калькулятор спадковості</a>
+        </nav>
+    </header>
+
+    <main class="hero-container">
+        <div class="photo-box">
+            <script src="{% static 'scripts/dna.js' %}"></script>
+        </div>
+
+        <div class="hero-text-content", id="dynamic-info">
+            <section class="intro-section">
+                <h2>Про наш сайт</h2>
+                <p>Наш сайт створено, щоб зробити вивчення ДНК наочним і доступним для всіх. Тут ви можете досліджувати будову молекули ДНК, її нуклеотиди та пари основ у інтерактивному форматі.</p>
+            </section>
+
+            <section class="guide-section">
+                <h2>Як користуватися моделлю ДНК</h2>
+                <p>Перед вами інтерактивна модель молекули ДНК, яка дозволяє розглянути її структуру у тривимірному форматі. Ви можете обертати модель та змінювати масштаб, щоб детальніше дослідити її будову.</p>
+                <p>Кожен елемент моделі є активним. Після натискання на окрему частину з’являється інформаційне вікно з поясненням її назви, будови та функції. Так ви можете поступово ознайомитися з усіма складовими молекули.</p>
+                <p>Модель створена для того, щоб зробити складну тему зрозумілою та наочною, навіть без спеціальних знань з біології.</p>
+            </section>
+        </div>
+    </main>
 
     <div class="info-row">
         <div class="info-card1">
             <div class="dyk-title">
                 <h3>Did<br>you<br>know?</h3>
-        </div>
-        <div class="dyk-text">
-            <p>Якби ти зміг розгорнути всі ланцюжки ДНК лише з однієї своєї клітини в одну лінію, її довжина склала б приблизно 2 метри.</p>
-        </div>
             </div>
+            <div class="dyk-text">
+                <p>
+                    {% if fact %}
+                        {{ fact.fun_fact }}
+                    {% else %}
+                        Stay tuned for more fun facts!
+                    {% endif %}
+                </p>
+            </div>
+        </div>
 
         <div class="info-card2">
             <h3>Додаткова інформація</h3>
-        <p>Локація: Центр Шептицького, УКУ, Львів.</p>
-        <p>Соціальні мережі:</p>
-        <p>Email:</p>
+            <p>Локація: Центр Шептицького, УКУ, Львів.</p>
+            <p>Соціальні мережі:</p>
+            <p>Email:</p>
         </div>
-
 
         <div class="info-card3">
             <p>Залиште відгук</p>
         </div>
-
     </div>
 
 </body>

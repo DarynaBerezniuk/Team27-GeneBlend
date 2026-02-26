@@ -1,6 +1,7 @@
 from django.db import models
 
-class FunFacts(models.Model):
+class FunFact(models.Model):
+    id = models.AutoField(primary_key=True)
     fun_fact = models.TextField()
 
 class ChromosomeInfo(models.Model):

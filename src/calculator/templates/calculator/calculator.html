@@ -34,8 +34,8 @@
       <div class="outer-card-title">Калькулятор генетичної спадковості</div>
       <div class="outer-card-sub">Натисніть на ознаку, щоб заповнити фенотип батька та матері</div>
 
-      <form method="POST" action="/calculate">
-
+      <form method="POST" action="{% url 'results' %}">
+        {% csrf_token %}
 
         <!-- ══ 1. КОЛІР ОЧЕЙ ══ -->
         <div class="trait-row" id="row-eye">
